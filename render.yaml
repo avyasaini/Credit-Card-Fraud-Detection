@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: secureswipe-fraud-detection
+    name: credit-card-fraud-detection
     env: python
     plan: free
     buildCommand: "pip install -r requirements.txt"
