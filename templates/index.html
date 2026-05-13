@@ -778,6 +778,15 @@
                                 </div>
                             </div>
 
+                            <div class="flex gap-4 mt-4">
+                                <button type="button" id="autofillSafeBtn" class="btn btn-secondary w-full text-sm">
+                                    Auto-Fill Normal Profile
+                                </button>
+                                <button type="button" id="autofillFraudBtn" class="btn w-full text-sm" style="background-color: var(--warning); color: white;">
+                                    Auto-Fill Fraud Profile
+                                </button>
+                            </div>
+
                             <button type="submit" id="submitButton" class="btn btn-primary w-full mt-4">
                                 Analyze Transaction Risk
                             </button>
@@ -1076,6 +1085,32 @@
                 `;
             }
         }
+
+        // Auto-fill logic
+        const autofillSafeBtn = document.getElementById('autofillSafeBtn');
+        const autofillFraudBtn = document.getElementById('autofillFraudBtn');
+
+        autofillSafeBtn.addEventListener('click', () => {
+            document.getElementById('amt').value = "45.50";
+            document.getElementById('category').value = "grocery_pos";
+            document.getElementById('city_pop').value = "50000";
+            document.getElementById('unix_time').value = updateCurrentUnixTime();
+            document.getElementById('lat').value = "40.7128";
+            document.getElementById('long').value = "-74.0060";
+            document.getElementById('merch_lat').value = "40.7130";
+            document.getElementById('merch_long').value = "-74.0065";
+        });
+
+        autofillFraudBtn.addEventListener('click', () => {
+            document.getElementById('amt').value = "2500.00";
+            document.getElementById('category').value = "shopping_net";
+            document.getElementById('city_pop').value = "800";
+            document.getElementById('unix_time').value = updateCurrentUnixTime();
+            document.getElementById('lat').value = "40.7128";
+            document.getElementById('long').value = "-74.0060";
+            document.getElementById('merch_lat').value = "51.5074"; // Completely different country (London)
+            document.getElementById('merch_long').value = "-0.1278";
+        });
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
